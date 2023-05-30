@@ -22,12 +22,14 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+import proyectomundial.DAO.LoginDAO;
 import proyectomundial.DAO.SeleccionDAO;
 import proyectomundial.model.Seleccion;
 
 public class GUIManual extends JFrame {
 
     SeleccionDAO seleccionDAO = new SeleccionDAO();
+    LoginDAO login = new LoginDAO();
     
     
     // Matrix que permite almancenar la información de las selecciones futbol cargadas
@@ -193,7 +195,7 @@ public class GUIManual extends JFrame {
      * el panel de contenidos y agregar la imagen de inicio de la aplicación
      */
     private void accionHome() {
-        
+        ValidarUsuario();
         jLabelTop.setText("Home");
         //jLabelTopDescription.setText("Bievenido al sistema de gestión de mundiales de fútbol");
 
@@ -209,6 +211,8 @@ public class GUIManual extends JFrame {
         jPanelMain.repaint();
         jPanelMain.revalidate();
     }
+    
+    
     
     /**
      * Función que se encarga de ajustar los elementos gráficos que componente la opción de navegación de SELECCIONES
@@ -312,7 +316,19 @@ public class GUIManual extends JFrame {
      * Si la lista de resultados en vacía, muestra un botón que permite cargar un archivo CSV
      * con la información de los resultados
      */
+    
+    private void ValidarUsuario(){
+        String Usuario = JOptionPane.showInputDialog("Introduzca Su usuario");
+        String Contrasena = JOptionPane.showInputDialog("Introduzca Su Contraseña");
+        
+        if (login.ValidarLogin(Usuario, Contrasena) == true) {
+            haySesion = true;
+        }
+        //return haySesion;
+    }
+    
     private void accionResultados() {
+        
         
         if(!haySesion) {
             JOptionPane.showMessageDialog(null, "No hay sesión iniciada");
