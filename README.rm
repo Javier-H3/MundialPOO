@@ -1,3 +1,7 @@
 
 Nombre Estudiante: Javier Hernandez
 Correo Electrónico del estudiante: j_hernandez34@unisimon.edu.co
+
+Observacioes:
+No aplicó una solución orientada a Objetos. Debió ser creada una clase User.java con los atributos del usuario. 
+Buena logica en la consulta y validación de las credenciales ingresadas por el usuario.
